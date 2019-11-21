@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" x:Class="ZzAppDev.LocationPage"
+             Title="Geo Location Finder">
+
+    <StackLayout>
+        <!-- Place new controls here -->
+
+        <Grid>
+
+            <Grid.RowDefinitions>
+
+                <RowDefinition Height="3.333*"></RowDefinition>
+                <RowDefinition Height="3.333*"></RowDefinition>
+                <RowDefinition Height="3.333*"></RowDefinition>
+
+            </Grid.RowDefinitions>
+
+
+            <StackLayout Grid.Row="1">
+
+                <StackLayout HorizontalOptions="Center"
+                    Orientation="Horizontal">
+
+                    <Label
+                        WidthRequest="90"
+                        Text="Latitude: "
+                        Font="Large"
+                        HorizontalOptions="Center" />
+                    
+                    <Label
+                        WidthRequest="180"
+                        HorizontalTextAlignment="End"
+                        x:Name="txtLat"
+                        Text="0.00"
+                        Font="Large"
+                        HorizontalOptions="Center" />
+
+                </StackLayout>
+
+                <StackLayout HorizontalOptions="Center"
+                    Orientation="Horizontal">
+
+                    <Label
+                        WidthRequest="90"
+                        Text="Longitude: "
+                        Font="Large"
+                        HorizontalOptions="Center" />
+                    
+                    <Label
+                        WidthRequest="180"
+                        HorizontalTextAlignment="End"
+                        x:Name="txtLong"
+                        Text="0.00"
+                        Font="Large"
+                        HorizontalOptions="Center" />
+
+                </StackLayout>
+
+            </StackLayout>
+
+            <StackLayout Grid.Row="1">
+                <ActivityIndicator
+                    x:Name="loadingIndicator"
+                    IsVisible="{Binding IsBusy}"
+                    IsRunning="{Binding IsBusy}"
+                    Color="Green" />
+
+            </StackLayout>
+
+            
+            <StackLayout Grid.Row="2">
+
+                <Button
+                    HorizontalOptions="Center"
+                    Margin="0,0,0,200"
+                    Text="Get GeoLocation"
+                    x:Name="btnGetLocation" />
+
+
+            </StackLayout>
+
+        </Grid>
+
+    </StackLayout>
+</ContentPage>
