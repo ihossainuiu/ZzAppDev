@@ -10,4 +10,16 @@
     <PackageReference Include="Xamarin.Essentials" Version="1.2.0" />
     <PackageReference Include="Xam.Plugin.Geolocator" Version="4.5.0.6" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Remove="MyPage.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="MyPage.xaml.cs" />
+    <Compile Remove="LocationXML.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="LocationRecyclerViewPage.xaml.cs">
+      <DependentUpon>LocationRecyclerViewPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
 </Project>

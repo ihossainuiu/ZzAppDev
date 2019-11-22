@@ -13,7 +13,7 @@ using Android.Content.Res;
 namespace ZzAppDev.Droid
 {
     [Activity(Label = "ZzAppDev", Icon = "@mipmap/icon", Theme = "@style/Theme.Splash", MainLauncher = false, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
-    public class LocationActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
+    public class LocationAcitivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {

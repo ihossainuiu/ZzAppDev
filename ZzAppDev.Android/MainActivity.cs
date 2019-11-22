@@ -32,7 +32,9 @@ namespace ZzAppDev.Droid
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
 
-            
+
+            //StartActivity(typeof(LocationXMLActiity));
+
             using (Bundle bundle = new Bundle())
             {
                 CrossCurrentActivity.Current.Init(this, bundle);
@@ -51,16 +53,6 @@ namespace ZzAppDev.Droid
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 
 
-        }
-
-
-
-        public bool IsLocationAvailable()
-        {
-            if (!CrossGeolocator.IsSupported)
-                return false;
-
-            return CrossGeolocator.Current.IsGeolocationAvailable;
         }
 
     }

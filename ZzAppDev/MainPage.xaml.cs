@@ -26,7 +26,7 @@ namespace ZzAppDev
         {
 
 
-            await Navigation.PushAsync(new LocationPage());
+            await Navigation.PushAsync(new LocationRecyclerViewPage());
 
         }
 

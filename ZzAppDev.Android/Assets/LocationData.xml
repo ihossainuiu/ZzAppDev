@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<cities>
+    <city>
+        <name>Dhaka</name>
+        <country>Bangladesh</country>
+    </city>
+    <city>
+        <name>Gazipur</name>
+        <country>Bangladesh</country>
+    </city>
+    <city>
+        <name>Savar</name>
+        <country>Bangladesh</country>
+    </city>
+    <city>
+        <name>Sirajgonj</name>
+        <country>Bangladesh</country>
+    </city>
+    <city>
+        <name>Cox's Bazar</name>
+        <country>Bangladesh</country>
+    </city>
+    <city>
+        <name>Chittagong</name>
+        <country>Bangladesh</country>
+    </city>
+    <city>
+        <name>Rajshahi</name>
+        <country>Bangladesh</country>
+    </city>
+    <city>
+        <name>Barisal</name>
+        <country>Bangladesh</country>
+    </city>        
+    <city>
+        <name>Comilla</name>
+        <country>Bangladesh</country>
+    </city>    
+    <city>
+        <name>Sylhet</name>
+        <country>Bangladesh</country>
+    </city>    
+    <city>
+        <name>Texas</name>
+        <country>America</country>
+    </city>    
+    <city>
+        <name>California</name>
+        <country>America</country>
+    </city>    
+    <city>
+        <name>New York</name>
+        <country>America</country>
+    </city>    
+    <city>
+        <name>Moscow</name>
+        <country>Russia</country>
+    </city>
+    <city>
+        <name>Ryazan</name>
+        <country>Russia</country>
+    </city>   
+    <city>
+        <name>Samara</name>
+        <country>Russia</country>
+    </city>   
+    <city>
+        <name>Kazan</name>
+        <country>Russia</country>
+    </city>
+    <city>
+        <name>Saint Petersburg</name>
+        <country>Russia</country>
+   </city>
+
+</cities>

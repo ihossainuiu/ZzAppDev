@@ -67,6 +67,11 @@
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="LocationActivity.cs" />
+    <Compile Include="LocationXMLAdapter.cs" />
+    <Compile Include="LocationsXML.cs" />
+    <Compile Include="XMLParserActivity.cs" />
+    <Compile Include="RetrieveXMLData.cs" />
+    <Compile Include="AsyncResponse.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -114,6 +119,14 @@
       <SubType></SubType>
       <Generator></Generator>
     </AndroidResource>
+    <AndroidResource Include="Resources\layout\Main.axml">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\LocationCard.axml">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />
@@ -123,6 +136,9 @@
       <Project>{8072683D-05A0-4283-9844-A64D63C39F83}</Project>
       <Name>ZzAppDev</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\LocationData.xml" />
   </ItemGroup>
  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>
