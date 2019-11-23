@@ -6,8 +6,8 @@ namespace ZzAppDev.Droid
     public class LocationXMLAdapter : RecyclerView.Adapter
     {
         public event EventHandler<int> ItemClick;
-        public LocationsXML mLocationsXML;
-        public LocationXMLAdapter(LocationsXML locations)
+        public LocationsObj mLocationsXML;
+        public LocationXMLAdapter(LocationsObj locations)
         {
             mLocationsXML = locations;
         }
@@ -17,7 +17,7 @@ namespace ZzAppDev.Droid
         }
         public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
         {
-            LocationXMLViewHolder vh = holder as LocationXMLViewHolder;
+            LocationRViewHolder vh = holder as LocationRViewHolder;
             vh.CityTV.Text = mLocationsXML[position].city.ToString();
             vh.CountryTV.Text = mLocationsXML[position].country.ToString();
         }
@@ -25,7 +25,7 @@ namespace ZzAppDev.Droid
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
         {
             View itemView = LayoutInflater.From(parent.Context).Inflate(Resource.Layout.LocationCard, parent, false);
-            LocationXMLViewHolder vh = new LocationXMLViewHolder(itemView, OnClick);
+            LocationRViewHolder vh = new LocationRViewHolder(itemView, OnClick);
             return vh;
         }
         private void OnClick(int obj)

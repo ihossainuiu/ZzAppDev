@@ -4,7 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" x:Class="ZzAppDev.LocationPage"
-             Title="Geo Location Finder">
+             Title="GPS Location Finder">
 
     <StackLayout>
         <!-- Place new controls here -->
@@ -76,12 +76,21 @@
 
                 <Button
                     HorizontalOptions="Center"
-                    Margin="0,0,0,200"
-                    Text="Get GeoLocation"
+                    Margin="0,0,0,20"
+                    Text="Show GPS Location"
                     x:Name="btnGetLocation" />
 
-
             </StackLayout>
+
+            <StackLayout Grid.Row="3">
+
+                <Button
+                    HorizontalOptions="Center"
+                    Margin="0,0,0,20"
+                    Text="Show Cities in Recycler View"
+                    x:Name="btnXMLReader" />
+
+            </StackLayout>        
 
         </Grid>
 

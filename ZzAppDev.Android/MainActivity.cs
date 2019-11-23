@@ -8,12 +8,22 @@ using Android.Widget;
 using Android.OS;
 using Plugin.Geolocator;
 using Plugin.CurrentActivity;
+using ZzAppDev.Droid;
+using Android.Support.Design.Widget;
+using Xamarin.Forms;
+using Android.Content;
 
+[assembly: Xamarin.Forms.Dependency(typeof(MainActivity))]
 namespace ZzAppDev.Droid
 {
-    [Activity(Label = "ZzAppDev", Icon = "@mipmap/icon", Theme = "@style/Theme.Splash", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
-    public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
+    [Activity(Label = "ZzAppDev", Icon = "@mipmap/sincos_logo", Theme = "@style/Theme.Splash", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity, BackToNative
     {
+
+
+        LocationDelegate locationDelegate = LocationPage.instance;
+        Android.Views.View layout;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             //TabLayoutResource = Resource.Layout.Tabbar;
@@ -32,13 +42,12 @@ namespace ZzAppDev.Droid
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
 
-
-            //StartActivity(typeof(LocationXMLActiity));
-
             using (Bundle bundle = new Bundle())
             {
                 CrossCurrentActivity.Current.Init(this, bundle);
             }
+
+            layout = Window.DecorView.FindViewById(Android.Resource.Id.Content);
 
         }
 
@@ -48,11 +57,12 @@ namespace ZzAppDev.Droid
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 
+        }
 
-            Plugin.Permissions.PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-            base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-
-
+        public void StartNativeIntentOrActivity()
+        {
+            var intent = new Intent(Forms.Context, typeof(LocationActivity));
+            Forms.Context.StartActivity(intent);
         }
 
     }

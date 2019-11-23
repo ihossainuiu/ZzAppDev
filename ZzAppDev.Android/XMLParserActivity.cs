@@ -9,61 +9,97 @@ using Android.Content.Res;
 using System.Xml.Linq;
 using System.Collections.Generic;
 using System.Linq;
+using Android.Views;
 
 namespace ZzAppDev.Droid
 {
-    [Activity(Label = "XML Parser Activity", Icon = "@mipmap/icon", Theme = "@style/Theme.AppCompat.Light", MainLauncher = false, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
-    public class LocationXMLActiity: AppCompatActivity, AsyncResponse
+    [Activity(Label = "XML Parser Activity", Icon = "@mipmap/icon", Theme = "@style/ThemeNoActionBar", MainLauncher = false, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    public class XMLParserActivity : AppCompatActivity, AsyncResponse
     {
 
         RecyclerView mRecycleView;
         RecyclerView.LayoutManager mLayoutManager;
-        LocationsXML mLocationsXML;
+        LocationsObj mLocationsObj;
         LocationXMLAdapter mAdapter;
+        ProgressDialog mDialog;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
+
+            //TabLayoutResource = Resource.Layout.Tabbar;
+            //ToolbarResource = Resource.Layout.Toolbar;
+            //ActionBar.SetHomeButtonEnabled(true);
+            //ActionBar.SetDisplayHomeAsUpEnabled(true);
+
             base.OnCreate(savedInstanceState);
-
-
-            XDocument xmlDoc = XDocument.Load(this.Assets.Open("LocationData.xml"));
-
-            IEnumerable<City> _cities = from s in xmlDoc.Descendants("city")
-                                        select new City
-                                        {
-                                            city = s.Element("name").Value,
-                                            country = s.Element("country").Value,
-                                        };
-
-            mLocationsXML = new LocationsXML();
-            // Set our view from the "main" layout resource  
             SetContentView(Resource.Layout.Main);
+
+
+            var toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
+            SetSupportActionBar(toolbar);
+            SupportActionBar.Title = "XML RecyclerView Activity";
+
+            SupportActionBar.SetDisplayHomeAsUpEnabled(true);
+            SupportActionBar.SetDisplayShowHomeEnabled(true);
+
+            mLocationsObj = new LocationsObj();
+            // Set our view from the "main" layout resource  
             mRecycleView = FindViewById<RecyclerView>(Resource.Id.recyclerView);
             mLayoutManager = new LinearLayoutManager(this);
             mRecycleView.SetLayoutManager(mLayoutManager);
-            mAdapter = new LocationXMLAdapter(mLocationsXML);
+            mAdapter = new LocationXMLAdapter(mLocationsObj);
             mAdapter.ItemClick += MAdapter_ItemClick;
             mRecycleView.SetAdapter(mAdapter);
 
-            //mLocationsXML.locations = _cities.ToList();
-            //mAdapter.NotifyDataSetChanged();
+            mDialog = new ProgressDialog(this);
+            mDialog.SetMessage("Please wait...");
+            mDialog.SetCancelable(false);
 
+
+            retrieveData();
+            
+
+        }
+
+        private void retrieveData()
+        {
             new RetrieveXMLData(this, mAdapter, this.Assets, this).Execute();
-            //new MyTask().Execute();
-
+            mDialog.Show();
         }
 
         private void MAdapter_ItemClick(object sender, int e)
         {            
-            Toast.MakeText(this, "Location: City: " + mLocationsXML[e].city + "; Country: " + mLocationsXML[e].country, ToastLength.Short).Show();
+            Toast.MakeText(this, "Location: City: " + mLocationsObj[e].city + "; Country: " + mLocationsObj[e].country, ToastLength.Short).Show();
         }
 
         public void processFinish(List<City> result)
         {
-            mLocationsXML.locations = result;
+            mLocationsObj.locations = result;
             mAdapter.NotifyDataSetChanged();
-            Toast.MakeText(this, "successful", ToastLength.Long).Show();
+
+            if (mDialog != null)
+            {
+                if (mDialog.IsShowing)
+                {
+                    mDialog.Dismiss();
+                }
+            }
+
         }
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            switch (item.ItemId)
+            {
+                case Android.Resource.Id.Home:
+                    Finish();
+                    return true;
+
+                default:
+                    return base.OnOptionsItemSelected(item);
+            }
+        }
+
 
     }
 

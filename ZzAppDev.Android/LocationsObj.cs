@@ -14,44 +14,18 @@ using System.Xml.Linq;
 namespace ZzAppDev.Droid
 {
 
-
-    public class MyTask : AsyncTask<string, int, int>
-    {
-        public MyTask()
-        {
-
-        }
-
-        protected override int RunInBackground(params string[] @params)
-        {
-            return 4;
-        }
-
-        protected override void OnPostExecute(int result)
-        {
-            System.Console.WriteLine("On post execute");
-            base.OnPostExecute(result);
-        }
-    }
-
-
-
     public class City
     {
         public string country { get; set; }
         public string city { get; set; }
     }
-    public class LocationsXML
+
+    public class LocationsObj
     {
 
         public List<City> locations = new List<City>();
 
-        //new Location() { mPhotoID = Resource.Drawable.Android3, mCaption = "Ahsan 3"},
-        //    new Location() { mPhotoID = Resource.Drawable.Android4, mCaption = "Ahsan 4"},
-        //    new Location() { mPhotoID = Resource.Drawable.Android5, mCaption = "Ahsan 5"},
-        //    new Location() { mPhotoID = Resource.Drawable.Android1, mCaption = "Ahsan 6"},
-
-        public LocationsXML()
+        public LocationsObj()
         {
         }
 
@@ -70,12 +44,12 @@ namespace ZzAppDev.Droid
 
     }
 
-    public class LocationXMLViewHolder : RecyclerView.ViewHolder
+    public class LocationRViewHolder : RecyclerView.ViewHolder
     {
         public TextView CityTV { get; set; }
         public TextView CountryTV { get; set; }
 
-        public LocationXMLViewHolder(View itemview, Action<int> listener) : base(itemview)
+        public LocationRViewHolder(View itemview, Action<int> listener) : base(itemview)
         {
             CityTV = itemview.FindViewById<TextView>(Resource.Id.tvCity);
             CountryTV = itemview.FindViewById<TextView>(Resource.Id.tvCountry);

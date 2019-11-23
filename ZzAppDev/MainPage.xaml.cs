@@ -19,14 +19,16 @@ namespace ZzAppDev
             InitializeComponent();
 
             btnNextActivity.Clicked += BtnNextActivity_Clicked;
-
+            
         }
 
         private async void BtnNextActivity_Clicked(object sender, EventArgs e)
         {
 
 
-            await Navigation.PushAsync(new LocationRecyclerViewPage());
+            DependencyService.Get<BackToNative>().StartNativeIntentOrActivity();
+
+            //await Navigation.PushAsync(new LocationPage());
 
         }
 
